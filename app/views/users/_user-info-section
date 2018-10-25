@@ -1,0 +1,13 @@
+<h2>User Info</h2>
+
+	<table class='table'>
+		<tr>画像</tr>
+		<tr>
+			<td>name</td>
+			<td>#{@user.name}</td>
+		</tr>
+		<tr>introduction</tr>
+		<tr><%= @user.introduction %></tr>
+	</table>
+
+<a>user edit btn</a>

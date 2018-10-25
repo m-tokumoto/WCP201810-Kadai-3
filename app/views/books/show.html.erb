@@ -1,0 +1,98 @@
+<html>
+<head>
+</head>
+
+<body>
+	<div class='body'>
+			<div class= 'container'>
+				
+				<p id= "notice"></p>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+						<h2>User Info</h2>
+
+						<table class='table'>
+							<tr>画像</tr>
+							<tr>
+								<th>name</th>
+								<th>user.name</th>
+							</tr>
+							<tr>introduction</tr>
+							<tr>user.introduction</tr>
+						</table>
+
+						<a>user edit btn</a>
+					
+						<div class="row">
+							<div class="col-md-12">
+								<h2>New book</h2>
+								<%= form_for(@book, url:books_path) do |f| %>
+								  <% if @book.errors.any? %>
+								    <div id="error_explanation">
+								      <h2><%= @book.errors.count %>件のエラーが発生しました。</h2>
+								      <ul>
+								      <% @book.errors.full_messages.each do |message| %>
+								        <li><%= message %></li>
+								      <% end %>
+								      </ul>
+								    </div>
+								  <% end %>
+								  <div class="row">
+								    <div class="col-md-12">
+								      <label>Title</label><br>
+								      <%= f.text_field :book_title, class:"book_title" %>
+								    </div>
+								  </div>
+								  <br>
+								  <div class="row">
+								    <div class="col-md-12">
+								        <label>opinion</label><br>
+								        <%= f.text_area :book_body, class:"book_body" %>
+								    </div>
+								  </div>
+								  <div class="col-md-12">
+								  	<%= f.submit "Create Book", class:"btn btn-primary " %>
+								  </div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+
+							<div class = 'col-md-9'>
+								<h2>Book Detail</h2>
+								<table class ='table table-hover table-inverse'>
+									<thead>
+										<tr>
+											<th></th>
+											<th>Title</th>
+											<th>Opinion</th>
+											<th clospan="3"></th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td>gazou</td>
+											<td><%= @boook.book_title %></td>
+											<td><%= @boook.book_body %></td>
+										    <td>
+										    	<% if @boook.user == current_user %>
+										    	  <%= link_to "Edit",edit_book_path(@boook.id),class:"edit_book_#{@boook.id}" %>
+										    	<% end %>
+										    </td>
+											<td>
+												<% if @boook.user == current_user %>
+												  <%= link_to "Destroy",book_path(@boook.id),class:"destroy_book_#{@boook.id}",method: :delete %>
+												<% end %>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</div>
+			</div>
+
+</body>

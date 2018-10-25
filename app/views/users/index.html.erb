@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+
+<body>
+	<div class='body'>
+			<div class= 'container'>
+				
+				<p id= "notice"></p>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+
+						<%= render 'users/user-info-section',user: @user %>
+					
+						<div class="row">
+							<div class="col-md-12">
+
+								<%= render 'books/newbook-form',book:@book %>
+
+							</div>
+						</div>
+					</div>
+
+							<div class = 'col-md-9'>
+								<h2>Users</h2>
+								<table class ='table table-hover table-inverse'>
+									<thead>
+										<tr>
+											<th>Image</th>
+											<th>Name</th>
+											<th></th>
+											<th clospan="3"></th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<th>gazou</th>
+											<th><%= @user.name %></th>
+											<th>link</th>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</div>
+			</div>
+</body>
